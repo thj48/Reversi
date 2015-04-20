@@ -1,0 +1,89 @@
+- only the first four squares can be occupied first.
+- the player can put the pieces in any of them.
+- are the first four squares filled up yet?
+    - if not only the first four sqaures are valide squares
+
+
+
+
+
+
+
+
+
+
+
+
+
+currently working on:
+implementing the flipSquares method.
+
+
+- pass it a square index number
+
+get a square that was flipped.
+get a list of all squares that exist around it, so if it's a corner it will only have treee squares to start checking from
+get the player on the square that was added
+determine the direction of each line from the square that was taken.
+build a new list of square to check for each direction.
+check each line
+get the 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+- make model classes
+	- Square.js
+	- Player.js
+	- Board.js
+	- Game.js
+	- 
+
+- at the end of each turn the game should ask if the board is full.
+- if it is not full the player is switched and the game continues.
+- if the board is full it itterates over the squares getting the
+ occupation of each one and tallying them up. The player with the
+ most squares wins, if each player has the same number of squares
+ the game ends in a tie.
+
+- at the end of each turn the location of the square selected is
+ looked at, all of it's adjacent squares are looked at individually,
+ itterate through and perform a "checkForSquaresThatNeedToBeFlipped()",
+ and flip any and all squares that need to be flipped. Then check for
+ the end of game condition which is the board being filled up.
+ 
+- determine rules.
+    should the first four moves be in the center of the board?
+    should the players be required to make moves that capture pieces
+    or are in positions adjacent to existing pieces?
+ 
+- rules
+- can start placing pieces whherever you want.
+- the player does not have to place a piece in a place that will result
+    in a capture.
+- 

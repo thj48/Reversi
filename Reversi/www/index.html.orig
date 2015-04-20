@@ -1,0 +1,175 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+	<title>Reversi</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<style type="text/css">
+		/* Prevent copy paste for all elements except text fields */
+		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+		input, textarea  { -webkit-user-select:text; }
+		body { background-color:white; color:black }
+	</style>
+	<script src='intelxdk.js'></script>
+	<script type="text/javascript"> 
+		/* This code is used to run as soon as Intel activates */
+		var onDeviceReady=function(){
+		//hide splash screen
+		intel.xdk.device.hideSplashScreen();
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+    
+    <!-- Tic tac toe code added below here -->
+    
+    <link rel="stylesheet" type="text/css" href="css/gridStyles.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css">
+		
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+		<script src="js/ajaxGoogleDownloaded.js"></script>
+<<<<<<< local
+        <!-- <script src="js/jquery.mobile-1.4.2.min.js"></script>
+=======
+>>>>>>> other
+		<!-- <script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.min.js"></script> -->
+		<script src="js/githubdownloaded.js"></script>
+        <script src="js/jquery.mobile-1.4.2.min.js"></script>
+		
+		<script src="js/Square.js"></script>
+		<script src="js/Board.js"></script>
+		<script src="js/WinningBoardCombinations.js"></script>
+		<script src="js/Player.js"></script>
+		<script src="js/Game.js"></script>
+			
+		<script src="js/publishSubscribe.js"></script>
+		
+		<!-- Handlebars template; needs CSS for style -->	
+		<script id="grid-template" type="text/x-handlebars-template">
+			<table border=1>
+				<tbody>
+					{{#each grid}}
+					<tr>
+						{{#each this}}
+						<td id="{{this}}"> </td>
+						{{/each}}
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</script>
+		
+		<script src="js/grid.js"></script>
+    
+        <script src="js/alert.js"></script>
+    
+    
+    
+</head>
+<body>
+	<!-- content goes here-->
+    
+<<<<<<< local
+    <div id="mainmenu">
+        <img name="welcombanner" id="welcmbanner" src="images/welcomebanner.png" width="100%" height="17%" border="0" alt="Reversi">         <br>
+        
+        <!-- toggle 1 or 2 player button -->
+        <img name="toggleForHumanOrComputerButton" id="toggleForHumanOrComputerButton" src="images/singleplayerblue.png"                        width="30%" height="15%" border="0" alt="toggle one plyaer two player"><br>
+        
+        <!-- start new game button -->        
+        <img name="startGameButton" id="startGameButton" src="images/startnewgame.png" width="30%" height="15%" border="0"                       alt="start new game"><br>
+        
+        
+        <!-- return to game button --> <!-- needs to be disabled or enabled depending -->        
+        <img name="returnToGameButton" id="returnToGameButton" class="toggleMainMenuAndGameButton" src="images/returntogame.png" width="30%" height="15%"                border="0" alt="return to game"><br>     
+        
+        
+        </div>
+    
+    <div id="menu" data-role="page">
+        <!-- 
+        <div class="center large"> Reversi!</div>
+        <div class="center medium">Menu</h3>
+          
+        <a href="index.html" data-role="button" onclick=doSomething();>Computer</a>
+        <a href="index.html" data-role="button" onclick=doSomething();>Friend</a>
+=======
+    <div data-role="page" id="mainmenu" class="main">
+            
+        <div id = "buttons">
+            
+                <a href="#gameplay" data-role="button"  name="singlePlayerButton" id="singlePlayerButton" class= "button">Single Player</a>
+           
+                <a href="#gameplay" data-role="button" name="multiPlayerButton" id="multiPlayerButton" class= "button">Multi Player</a>
+>>>>>>> other
+            
+                <a href="#gameplay" data-role="button"  name="returnToGameButton" id="button" class= "button">Resume Game</a> 
+            
+        </div>
+        
+<<<<<<< local
+            if(window.game.canResume()){
+                <a href="index.html" data-role="button" >Resume</a>
+               
+            }else{
+                <a href="index.html" data-role="button" data-mini="true">Resume</a>
+            }
+        
+        <input type="button" value="One player" id="toggleForHumanOrComputerButton" name="returnToMainMenuButton" class="toggleMainMenuAndGameButton">
+        <input type="button" value="Start game" id ="startGameButton" name="returnToMainMenuButton" class="toggleMainMenuAndGameButton">
+        <input type="button" value="Return to game" name="returnToMainMenuButton" class="toggleMainMenuAndGameButton">
+        -->
+            
+=======
+>>>>>>> other
+    </div>
+    
+    
+<<<<<<< local
+    <div id="gameplay">
+			<header>
+                <img name="returnToMainMenuButton" class="toggleMainMenuAndGameButton" src="images/mainmenu.png"                                 width="30%" height="15%" border="0" alt="main menu"><br>
+                <!--
+                <input type="button" value="Main Menu" name="returnToMainMenuButton" class="toggleMainMenuAndGameButton">
+                -->
+                <br><br>
+			</header>
+=======
+    <div data-role="page" id="gameplay" class="game">
+>>>>>>> other
+
+        <header data-role="header" data-add-back-btn="true" id="header">
+               
+                    <h1>Reversi</h1>
+        </header>
+        
+			<div id="grid">
+        
+            </div>
+<<<<<<< local
+            
+            <br>
+            <div id="points">
+                <img name="playerOnePoints" class="playerPoints" src="images/player1Points.png"                            width="25%" height="7%" border="0" alt="Player 1: "><div id="playerOnePoints">2</div>            
+            <br>
+            <img name="PlayerTwoPoints" class="playerPoints" src="images/player2Points.png"                            width="25%" height="7%" border="0" alt="Player 2: "><div id="playerTwoPoints"> 2</div>
+            </div>
+=======
+       
+    <div id = "score" >    
+        <div id="playerOnePoints">2</div><div id="playerTwoPoints">2</div>
+        <div id="img"></div>
+    </div>   
+>>>>>>> other
+        
+<<<<<<< local
+            <!--
+            <div id="playerOnePoints">Player 1: 2</div>
+            <div id="playerTwoPoints">Player 2: 2</div>
+			-->
+=======
+   
+        
+>>>>>>> other
+    </div>
+</body>
+</html>

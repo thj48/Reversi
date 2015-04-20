@@ -1,0 +1,154 @@
+<!DOCTYPE html><!--HTML5 doctype-->
+<html>
+<head>
+	<title>Reversi</title>
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=0" />
+	<style type="text/css">
+		/* Prevent copy paste for all elements except text fields */
+		*  { -webkit-user-select:none; -webkit-tap-highlight-color:rgba(255, 255, 255, 0); }
+		input, textarea  { -webkit-user-select:text; }
+		body { background-color:white; color:black }
+	</style>
+	<script src='intelxdk.js'></script>
+	<script type="text/javascript"> 
+		/* This code is used to run as soon as Intel activates */
+		var onDeviceReady=function(){
+		//hide splash screen
+		intel.xdk.device.hideSplashScreen();
+		};
+		document.addEventListener("intel.xdk.device.ready",onDeviceReady,false);
+	</script>
+    
+    <!-- Tic tac toe code added below here -->
+    
+    <link rel="stylesheet" type="text/css" href="css/gridStyles.css">
+    <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.2.min.css">
+		
+		<!--<script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script> -->
+		<script src="js/ajaxGoogleDownloaded.js"></script>
+		<!-- <script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.rc.1.min.js"></script> -->
+		<script src="js/githubdownloaded.js"></script>
+        <script src="js/jquery.mobile-1.4.2.min.js"></script>
+		
+		<script src="js/Square.js"></script>
+		<script src="js/Board.js"></script>
+		<script src="js/WinningBoardCombinations.js"></script>
+		<script src="js/Player.js"></script>
+		<script src="js/Game.js"></script>
+			
+		<script src="js/publishSubscribe.js"></script>
+		
+		<!-- Handlebars template; needs CSS for style -->	
+		<script id="grid-template" type="text/x-handlebars-template">
+			<table border=1>
+				<tbody>
+					{{#each grid}}
+					<tr>
+						{{#each this}}
+						<td id="{{this}}"> </td>
+						{{/each}}
+					</tr>
+					{{/each}}
+				</tbody>
+			</table>
+		</script>
+		
+		<script src="js/grid.js"></script>
+    
+        <script src="js/alert.js"></script>
+    
+    
+    
+</head>
+<body>
+	<!-- content goes here-->
+    
+    <div data-role="page" id="mainmenu" class="main">
+            
+        <div id = "buttons">
+            
+                <a href="#gameplay" data-role="button"  name="singlePlayerButton" id="singlePlayerButton" class= "button">Single Player</a>
+           
+                <a href="#gameplay" data-role="button" name="multiPlayerButton" id="multiPlayerButton" class= "button">Multi Player</a>
+            
+                <a href="#gameplay" data-role="button"  name="returnToGameButton" id="button" class= "button">Resume Game</a> 
+            
+                <a href="#scoreBoard" data-role="button" id="viewScoresButton" class= "button">View Scoreboard</a>
+            
+        </div>
+        
+    </div>
+    
+    
+    <div data-role="page" id="gameplay" class="game">
+
+        <header data-role="header" data-add-back-btn="true" id="header">
+               
+                    <h1>Reversi</h1>
+        </header>
+        
+			<div id="grid">
+        
+            </div>
+       
+            <div id = "score" >    
+                <div id="playerOnePoints">2</div><div id="playerTwoPoints">2</div>
+                <div id="img"></div>
+            </div>  
+    </div>
+    
+    <div data-role="page" id="scoreBoard">
+        <header data-role="header" data-add-back-btn="true" id="header">
+               
+                    <h1>Highscore Board</h1>
+        </header>
+        <div data-role=content>
+
+        </div>
+    </div>
+        
+</body>
+    
+</html>
+<script>
+$("#viewScoresButton").bind ("click", function (event)
+{
+    
+    var highscores = "<ul><li>hi</li>" ;
+    var scores;
+    var scoresStr;
+    
+    $.getJSON("http://tholt4.pythonanywhere.com/_getScores", function(data){
+        scoresStr = data.result;
+        scores = scoresStr.split(",");
+        
+//        for(int i = 0; i < scores.length; i++) {
+//            highscores += "<li>" +scores[i]+ "</li>" ;    
+//        }
+    
+    });
+    scores = scoresStr.split(",");
+    
+    highscores += "</ul>";
+    
+    
+    $("#scoreBoard").unbind ().bind ("pagebeforeshow", function ()
+
+    {
+
+        var $content = $("#scoreBoard div:jqmData(role=content)");
+
+        $content.html (highscores);
+
+        var $ul = $content.find ("ul");
+
+        $ul.listview ();
+
+    });
+
+
+      $.mobile.changePage($("#scoreBoard"));
+});
+    
+</script>
